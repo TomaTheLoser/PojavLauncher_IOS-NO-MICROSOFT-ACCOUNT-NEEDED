@@ -90,7 +90,10 @@ jobs:
         run: |
           mkdir -p depends
           echo "Skipping JRE21 - not needed for MC 1.12.2"
-
+          
+      - name: Install gmake
+        run: brew install make
+        
       - name: Build for ${{ matrix.platform_name }}
         run: |
           export RUNNER=1
