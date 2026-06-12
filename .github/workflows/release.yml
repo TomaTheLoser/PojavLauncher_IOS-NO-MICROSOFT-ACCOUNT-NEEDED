@@ -86,16 +86,10 @@ jobs:
           rm jre17.tar.xz
 
       - name: Get JRE21
-        uses: dawidd6/action-download-artifact@v2
-        with:
-          github_token: ${{secrets.GITHUB_TOKEN}}
-          workflow: build.yml
-          path: depends
-          workflow_conclusion: completed
-          allow_forks: false
-          repo: PojavLauncherTeam/android-openjdk-build-multiarch
-          branch: buildjre17-21
-          name: jre21-ios-aarch64
+        continue-on-error: true
+        run: |
+          mkdir -p depends
+          echo "Skipping JRE21 - not needed for MC 1.12.2"
 
       - name: Build for ${{ matrix.platform_name }}
         run: |
