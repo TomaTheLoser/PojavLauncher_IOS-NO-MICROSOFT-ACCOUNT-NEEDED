@@ -70,16 +70,12 @@ jobs:
           git push
 
       - name: Get JRE8
-        uses: dawidd6/action-download-artifact@v2
-        with:
-          github_token: ${{secrets.GITHUB_TOKEN}}
-          workflow: build.yml
-          path: depends
-          workflow_conclusion: success
-          allow_forks: false
-          repo: PojavLauncherTeam/android-openjdk-build-multiarch
-          branch: buildjre8
-          name: jre8-ios-aarch64
+        run: |
+          mkdir -p depends
+          curl -L -o depends/jre8.tar.xz "https://github.com/PojavLauncherTeam/android-openjdk-build-multiarch/releases/download/jre8-40df388/jre8-arm64-20220811-release.tar.xz"
+          cd depends
+          tar -xf jre8.tar.xz
+          rm jre8.tar.xz
 
       - name: Get JRE17
         uses: dawidd6/action-download-artifact@v2
