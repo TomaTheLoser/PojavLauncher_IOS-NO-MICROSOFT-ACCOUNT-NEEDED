@@ -5,7 +5,7 @@
 
 ## Important note
 
-**PojavLauncher has been discontinued** and is no longer supported. Its successor is available [here](https://github.com/AngelAuraMC/Amethyst-iOS).
+**PojavLauncher has been continued with this fork.
 
 
 ## Introduction
