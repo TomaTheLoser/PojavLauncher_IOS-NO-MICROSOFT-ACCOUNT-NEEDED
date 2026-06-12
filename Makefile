@@ -152,8 +152,8 @@ METHOD_PACKAGE = \
 # Function to download and unpack Java runtimes.
 METHOD_JAVA_UNPACK = \
 	cd $(SOURCEDIR)/depends; \
-	if [ ! -f "java-$(1)-openjdk/release" ] && [ ! -f "$(ls jre$(1)-*.tar.xz 2>/dev/null)" ]; then \
-		if [ "$(RUNNER)" != "1" ]; then \
+	if [ ! -f "java-$(1)-openjdk/release" ]; then \
+		if [ "$(RUNNER)" != "1" ] && ! ls jre$(1)-*.tar.xz >/dev/null 2>&1; then \
 			wget '$(2)' -q --show-progress; \
 			unzip jre*-ios-aarch64.zip && rm jre*-ios-aarch64.zip; \
 		fi; \
