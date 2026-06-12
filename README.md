@@ -109,9 +109,9 @@ PojavLauncher is amazing, and surprisingly stable, and it wouldn't be this way w
 - [DyldDeNeuralyzer](https://github.com/xpn/DyldDeNeuralyzer): bypasses Library Validation for loading external runtime
 - Thanks to [MCHeads](https://mc-heads.net) for providing Minecraft avatars.
 
-## Special thanks to MacStadium!
-This project is listed under the MacStadium Open Source Program, which allows all of us developers to keep on moving forward even without physical access to a Mac.
+## No MacStadium
+This custom fork doesn't use MacStadium but changed to use defualt free github Mac instead because, for any dev want to fork from the original project would never able to compile in github. But this fork can be compiled using Mac runner from github so, if anyone fork from this fork, you wouldn't feel the headach to get this thing compile.
 
-![](https://user-images.githubusercontent.com/55281754/183129754-c3736bb9-d528-4af7-9351-a12b3be7549e.png)
+
 
 <!-- sillysock was here -->
