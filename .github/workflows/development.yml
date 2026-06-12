@@ -22,20 +22,9 @@ jobs:
             platform_name: iossimulator
           - platform: 8
             platform_name: tvossimulator
-    
-    runs-on: MacStadium
+
+    runs-on: macos-latest
     steps:
-      - name: Remove work folders
-        env:
-          password: ${{ secrets.ELLIE_MINI_SECRET }}
-        run: |
-          echo "before"
-          ls -lah ./
-          echo $password | sudo -S rm -rf ./* || true
-          echo $password | sudo -S rm -rf ./.??* || true
-          echo "after"
-          ls -lah ./
-          
       - name: Checkout repository
         uses: actions/checkout@main
 
@@ -49,7 +38,7 @@ jobs:
 
       - name: Cache gl4es
         uses: actions/cache@main
-        if: false # use gl4es 1.1.5
+        if: false
         id: gl4es-cache
         with:
           path: gl4es/libs
@@ -76,7 +65,7 @@ jobs:
             -DCMAKE_C_FLAGS=-Wno-error=implicit-function-declaration
           cmake --build build --config RelWithDebInfo --target GL
           cp -R lib/libGL.dylib ../Natives/resources/Frameworks/libgl4es_114.dylib
-          
+
       - name: Push gl4es
         if: false && github.event != 'pull_request' && github.ref_name == 'main' && steps.gl4es-cache.outputs.cache-hit != 'true'
         continue-on-error: true
@@ -84,7 +73,7 @@ jobs:
           git add Natives/resources/Frameworks/libgl4es_114.dylib
           git commit -am "CI: Update gl4es"
           git push
-          
+
       - name: Get JRE8
         uses: dawidd6/action-download-artifact@v2
         with:
@@ -122,20 +111,14 @@ jobs:
           name: jre21-ios-aarch64
 
       - name: Build for ${{ matrix.platform_name }}
-        env:
-          password: ${{ secrets.ELLIE_MINI_SECRET }}
         run: |
-          export PATH=/opt/procursus/bin:/opt/homebrew/bin:$PATH
           export RUNNER=1 SLIMMED=1
           if [ "${{ matrix.platform_name }}" == "ios" ]; then
-            # Build ipa and tipa for iOS
             gmake -j$(sysctl -n hw.ncpu) dsym package PLATFORM=${{ matrix.platform }}
             gmake -j$(sysctl -n hw.ncpu) dsym package PLATFORM=${{ matrix.platform }} TROLLSTORE_JIT_ENT=1
           elif [ "${{ matrix.platform_name }}" == "tvos" ]; then
-            # Build tipa only for tvOS
             gmake -j$(sysctl -n hw.ncpu) dsym package PLATFORM=${{ matrix.platform }} TROLLSTORE_JIT_ENT=1
           else
-            # Build ipa only for everything else
             gmake -j$(sysctl -n hw.ncpu) dsym package PLATFORM=${{ matrix.platform }}
           fi
 
