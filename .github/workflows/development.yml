@@ -75,28 +75,18 @@ jobs:
           git commit -am "CI: Update gl4es"
           git push
 
+      
       - name: Get JRE8
-        uses: dawidd6/action-download-artifact@v2
-        with:
-          github_token: ${{secrets.GITHUB_TOKEN}}
-          workflow: build.yml
-          path: depends
-          workflow_conclusion: success
-          allow_forks: false
-          repo: PojavLauncherTeam/android-openjdk-build-multiarch
-          branch: buildjre8
-          name: jre8-ios-aarch64
+        run: |
+          mkdir -p depends
+          curl -L -o depends/jre8-ios-aarch64.tar.xz "https://github.com/PojavLauncherTeam/android-openjdk-build-multiarch/releases/download/jre8-40df388/jre8-arm64-20220811-release.tar.xz"
 
       - name: Get JRE17
         run: |
           mkdir -p depends
-          curl -L -o depends/jre17.tar.xz "https://github.com/PojavLauncherTeam/android-openjdk-build-multiarch/releases/download/jre17-ca01427/jre17-arm64-20220817-release.tar.xz"
-          cd depends
-          tar -xf jre17.tar.xz
-          rm jre17.tar.xz
+          curl -L -o depends/jre17-ios-aarch64.tar.xz "https://github.com/PojavLauncherTeam/android-openjdk-build-multiarch/releases/download/jre17-ca01427/jre17-arm64-20220817-release.tar.xz"
 
       - name: Get JRE21
-        continue-on-error: true
         run: |
           mkdir -p depends
           echo "Skipping JRE21 - not needed for MC 1.12.2"
