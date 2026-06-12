@@ -108,6 +108,10 @@ jobs:
           brew install --cask temurin@8
           echo "JAVA_HOME=$(/usr/libexec/java_home -v 1.8)" >> $GITHUB_ENV
 
+      - name: Install ldid
+        run: brew install ldid
+      
+      
       - name: Build for ${{ matrix.platform_name }}
         run: |
           export RUNNER=1 SLIMMED=1
