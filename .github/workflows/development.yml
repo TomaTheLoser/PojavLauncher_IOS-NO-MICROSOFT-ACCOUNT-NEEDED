@@ -103,6 +103,11 @@ jobs:
       - name: Install gmake
         run: brew install make
 
+      - name: Install JDK 8
+        run: |
+          brew install --cask temurin@8
+          echo "JAVA_HOME=$(/usr/libexec/java_home -v 1.8)" >> $GITHUB_ENV
+
       - name: Build for ${{ matrix.platform_name }}
         run: |
           export RUNNER=1 SLIMMED=1
