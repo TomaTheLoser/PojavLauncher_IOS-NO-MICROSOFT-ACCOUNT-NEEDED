@@ -14,6 +14,7 @@ jobs:
   build:
     name: Development build
     strategy:
+      fail-fast: false
       matrix:
         include:
           - platform: 2
