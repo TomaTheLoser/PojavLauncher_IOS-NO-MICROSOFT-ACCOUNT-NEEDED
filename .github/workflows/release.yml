@@ -78,16 +78,12 @@ jobs:
           rm jre8.tar.xz
 
       - name: Get JRE17
-        uses: dawidd6/action-download-artifact@v2
-        with:
-          github_token: ${{secrets.GITHUB_TOKEN}}
-          workflow: build.yml
-          path: depends
-          workflow_conclusion: success
-          allow_forks: false
-          repo: PojavLauncherTeam/android-openjdk-build-multiarch
-          branch: buildjre17-21
-          name: jre17-ios-aarch64
+        run: |
+          mkdir -p depends
+          curl -L -o depends/jre17.tar.xz "https://github.com/PojavLauncherTeam/android-openjdk-build-multiarch/releases/download/jre17-ca01427/jre17-arm64-20220817-release.tar.xz"
+          cd depends
+          tar -xf jre17.tar.xz
+          rm jre17.tar.xz
 
       - name: Get JRE21
         uses: dawidd6/action-download-artifact@v2
