@@ -134,7 +134,7 @@
     [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
     [self tableView:self.tableView didSelectRowAtIndexPath:indexPath];
     
-    if (getEntitlementValue(@"get-task-allow")) {
+    if (getEntitlementValue(@"get-task-allow") || getEntitlementValue(@"com.apple.private.security.no-sandbox")) {
         [self displayProgress:localize(@"login.jit.checking", nil)];
         if (isJITEnabled(false)) {
             [self displayProgress:localize(@"login.jit.enabled", nil)];
