@@ -134,26 +134,8 @@
     [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
     [self tableView:self.tableView didSelectRowAtIndexPath:indexPath];
     
-    if (getEntitlementValue(@"get-task-allow") || getEntitlementValue(@"com.apple.private.security.no-sandbox")) {
-        [self displayProgress:localize(@"login.jit.checking", nil)];
-        if (isJITEnabled(false)) {
-            [self displayProgress:localize(@"login.jit.enabled", nil)];
-            [self displayProgress:nil];
-        } else {
-            [self enableJITWithAltKit];
-        }
-    } else if (!NSProcessInfo.processInfo.macCatalystApp && !getenv("SIMULATOR_DEVICE_NAME")) {
-        [self displayProgress:localize(@"login.jit.fail", nil)];
-        [self displayProgress:nil];
-        UIAlertController* alert = [UIAlertController alertControllerWithTitle:localize(@"login.jit.fail.title", nil)
-            message:localize(@"login.jit.fail.description_unsupported", nil)
-            preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction* okAction = [UIAlertAction actionWithTitle:localize(@"OK", nil) style:UIAlertActionStyleDefault handler:^(id action){
-            exit(-1);
-        }];
-        [alert addAction:okAction];
-        [self presentViewController:alert animated:YES completion:nil];
-    }
+    [self displayProgress:localize(@"login.jit.enabled", nil)];
+    [self displayProgress:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
