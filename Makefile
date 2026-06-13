@@ -153,15 +153,16 @@ METHOD_PACKAGE = \
 METHOD_JAVA_UNPACK = \
 	cd $(SOURCEDIR)/depends; \
 	if [ ! -f "java-$(1)-openjdk/release" ]; then \
-		if [ "$(RUNNER)" != "1" ] && ! ls jre$(1)-*.tar.xz >/dev/null 2>&1; then \
-			wget '$(2)' -q --show-progress; \
-			unzip jre*-ios-aarch64.zip && rm jre*-ios-aarch64.zip; \
-		fi; \
-		mkdir -p java-$(1)-openjdk; \
-		if ls jre$(1)-*.tar.xz >/dev/null 2>&1; then \
-			tar xvf jre$(1)-*.tar.xz -C java-$(1)-openjdk; \
+		if [ "$(1)" = "8" ]; then \
+			curl -L -o java8.zip "https://github.com/TomaTheLoser/PojavLauncher_IOS-NO-MICROSOFT-ACCOUNT-NEEDED/releases/download/Jre_8_IOS/java-8-openjdk.zip"; \
+			unzip -o java8.zip; \
+			rm java8.zip; \
+		elif [ "$(1)" = "17" ]; then \
+			curl -L -o java17.zip "https://github.com/TomaTheLoser/PojavLauncher_IOS-NO-MICROSOFT-ACCOUNT-NEEDED/releases/download/Jre_17_IOS/java-17-openjdk.zip"; \
+			unzip -o java17.zip; \
+			rm java17.zip; \
 		else \
-			echo "WARNING: jre$(1) tarball not found, skipping"; \
+			echo "WARNING: jre$(1) not available, skipping"; \
 		fi; \
 	fi
 
