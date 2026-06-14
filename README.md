@@ -9,8 +9,7 @@ A fork of PojavLauncher iOS with all Microsoft account restrictions removed. Pla
 - **No Microsoft account required** — local offline accounts work fully, including downloading and launching the game
 - **No PC needed** — install via eSign or any IPA installer directly on your jailbroken device
 - **JIT works automatically** — jailbreak grants JIT without AltStore, AltServer, or any external tool
-- **Built on GitHub Actions** — uses free GitHub macOS runners instead of the original team's private MacStadium infrastructure, so anyone can fork and rebuild without access to private CI machines
-- **Bundled working Java runtimes** — JRE 8 and JRE 17 are sourced from stable release assets, not expired CI artifacts
+- **Bundled working Java runtimes** — JRE 8 and JRE 17 included and ready to go, no extra setup
 
 ---
 
