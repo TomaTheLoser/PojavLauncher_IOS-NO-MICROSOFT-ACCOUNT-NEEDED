@@ -1,6 +1,6 @@
 # PojavLauncher iOS — No Microsoft Account Needed
 
-A fork of PojavLauncher iOS with all Microsoft account restrictions removed. Play Minecraft: Java Edition on your jailbroken iPhone or iPad with zero setup, no Microsoft login, no PC required.
+A fork of PojavLauncher iOS that lets you play Minecraft with premium account or offline mode. Play Minecraft: Java Edition on your jailbroken iPhone or iPad with zero setup, no Microsoft login, no PC required.
 
 ---
 
