@@ -41,17 +41,6 @@ A fork of PojavLauncher iOS with all Microsoft account restrictions removed. Pla
 
 ---
 
-## Build it yourself
-
-This fork is designed to compile cleanly on GitHub Actions free runners — no private CI infrastructure needed.
-
-1. Fork this repo
-2. Go to **Actions → Release build → Run workflow**
-3. Wait ~10 minutes for all 4 platform builds to complete
-4. Download the `net.kdt.pojavlauncher-ios.ipa` artifact from the run summary
-
----
-
 ## Known limitations
 
 - JRE 21 is not bundled (not needed for any Minecraft version below 1.20.5)
