@@ -9,7 +9,7 @@ A fork of PojavLauncher iOS with all Microsoft account restrictions removed. Pla
 - **No Microsoft account required** — local offline accounts work fully, including downloading and launching the game
 - **No PC needed** — install via eSign or any IPA installer directly on your jailbroken device
 - **JIT works automatically** — jailbreak grants JIT without AltStore, AltServer, or any external tool
-- **Bundled working Java runtimes** — JRE 8 and JRE 17 included and ready to go, no extra setup
+
 
 ---
 
@@ -42,7 +42,6 @@ A fork of PojavLauncher iOS with all Microsoft account restrictions removed. Pla
 
 ## Known limitations
 
-- JRE 21 is not bundled (not needed for any Minecraft version below 1.20.5)
 - TrollStore is not supported on iOS 16.7.x (except the RC build)
 - Performance mods that replace the GL pipeline (e.g. ImmediatelyFast, Sodium) are incompatible — use OptiFine instead
 
